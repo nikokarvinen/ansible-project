@@ -1,0 +1,25 @@
+---
+- name: Install Python on Containers
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Install Python (Debian/Ubuntu)
+      raw: apt-get update && apt-get install -y python3
+
+- name: Deploy Nginx
+  hosts: nginx
+  gather_facts: false
+  roles:
+    - nginx
+
+- name: Deploy PostgreSQL
+  hosts: postgres
+  gather_facts: false
+  roles:
+    - postgresql
+
+- name: Deploy Apache
+  hosts: apache
+  gather_facts: false
+  roles:
+    - apache

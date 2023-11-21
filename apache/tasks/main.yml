@@ -1,0 +1,28 @@
+---
+- name: Install Apache2 and necessary modules
+  apt:
+    name:
+      - apache2
+      - apache2-utils
+    state: present
+
+- name: Disable MPM Prefork Module
+  command: a2dismod mpm_prefork
+  notify: restart apache
+
+- name: Enable MPM Event Module
+  command: a2enmod mpm_event
+  register: mpm_event_enable
+  ignore_errors: true
+
+- name: Debug MPM Event Module enable
+  debug:
+    var: mpm_event_enable
+  when: mpm_event_enable.failed
+
+- name: Copy Apache Configuration
+  template:
+    src: apache2.conf.j2
+    dest: /etc/apache2/apache2.conf
+  when: apache_custom_config
+  notify: restart apache

@@ -1,0 +1,9 @@
+---
+postgresql_version: "12"
+postgresql_users:
+  - name: dbuser
+    password: securepassword
+postgresql_databases:
+  - name: mydatabase
+    owner: dbuser
+postgresql_port: 5432
