@@ -17,3 +17,11 @@
   gather_facts: false
   roles:
     - postgresql
+
+- name: Install vim
+  hosts: nginx
+  tasks:
+    - name: Ensure vim is intalled
+      package:
+        name: vim
+        state: latest
