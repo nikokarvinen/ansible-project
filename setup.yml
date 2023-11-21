@@ -17,9 +17,3 @@
   gather_facts: false
   roles:
     - postgresql
-
-- name: Deploy Apache
-  hosts: apache
-  gather_facts: false
-  roles:
-    - apache

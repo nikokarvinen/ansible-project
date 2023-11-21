@@ -3,6 +3,3 @@ nginx-server ansible_connection=docker
 
 [postgres]
 postgres-server ansible_connection=docker
-
-[apache]
-apache-server ansible_connection=docker
