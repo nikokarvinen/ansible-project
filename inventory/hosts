@@ -1,0 +1,10 @@
+[nginx]
+nginx-server ansible_connection=docker ansible_user=root ansible_python_interpreter=/opt/venv/bin/python3
+nginx-server2 ansible_connection=docker ansible_user=root ansible_python_interpreter=/opt/venv/bin/python3
+
+[postgres]
+postgres-server ansible_connection=docker ansible_user=root ansible_python_interpreter=/opt/venv/bin/python3
+
+[docker:children]
+nginx
+postgres

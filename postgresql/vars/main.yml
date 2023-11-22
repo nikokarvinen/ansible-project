@@ -1,5 +1,4 @@
 ---
-postgresql_version: "12"
 postgresql_users:
   - name: dbuser
     password: [$ANSIBLE_VAULT;1.1;AES256

@@ -1,0 +1,2 @@
+nginx_version: "latest"
+postgres_version: "13"
