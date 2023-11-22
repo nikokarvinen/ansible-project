@@ -82,6 +82,8 @@ Replace [your-vault-password] with your actual vault password. This file should 
 
 ### Encrypting Sensitive Data:
 
+![Encrypted password](images/secret.jpg)
+
 Use Ansible Vault to encrypt sensitive data:
 ```bash
 ansible-vault encrypt_string 'your_sensitive_data' --name 'variable_name'
