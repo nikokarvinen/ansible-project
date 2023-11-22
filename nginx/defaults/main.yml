@@ -1,4 +1,6 @@
 ---
-# defaults file for nginx
 nginx_user: "www-data"
 nginx_worker_processes: "auto"
+nginx_worker_connections: 1024
+nginx_keepalive_timeout: 65
+nginx_client_max_body_size: 50m

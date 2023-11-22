@@ -1,0 +1,5 @@
+- name: Install Barman
+  apt:
+    name: barman
+    state: present
+    update_cache: yes

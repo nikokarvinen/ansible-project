@@ -3,20 +3,39 @@
   hosts: all
   gather_facts: false
   tasks:
-    - name: Install Python (Debian/Ubuntu)
-      raw: apt-get update && apt-get install -y python3 python3-venv python3-pip
+    - name: Update apt cache
+      apt:
+        update_cache: yes
+        cache_valid_time: 3600
+
+    - name: Install Python and dependencies
+      apt:
+        name:
+          - python3
+          - python3-venv
+          - python3-pip
+        state: present
 
     - name: Create a Python virtual environment
-      raw: python3 -m venv /opt/venv
+      command: python3 -m venv /opt/venv
+      args:
+        creates: /opt/venv
 
     - name: Install Python 'requests' Library in virtual environment
-      raw: /opt/venv/bin/pip install requests
+      pip:
+        name: requests
+        virtualenv: /opt/venv
 
 - name: Deploy Nginx
   hosts: nginx
   gather_facts: false
   roles:
     - nginx
+  handlers:
+    - name: restart nginx
+      service:
+        name: nginx
+        state: restarted
 
 - name: Deploy PostgreSQL
   hosts: postgres

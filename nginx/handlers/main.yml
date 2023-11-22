@@ -3,3 +3,5 @@
   service:
     name: nginx
     state: restarted
+
+- include_tasks: certbot-install.yml

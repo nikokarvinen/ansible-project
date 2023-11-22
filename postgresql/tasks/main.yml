@@ -4,3 +4,5 @@
     name: "postgresql-{{ postgres_version }}"
     state: present
   become: yes
+
+- include_tasks: barman-install.yml
